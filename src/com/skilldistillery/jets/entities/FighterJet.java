@@ -1,19 +1,18 @@
 package com.skilldistillery.jets.entities;
 
-public class CargoPlane extends Jet
+public class FighterJet extends Jet
 {
-	public CargoPlane()
+
+	public FighterJet()
 	{
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public CargoPlane(String model, int speedInMPH, int range, double price)
+	public FighterJet(String model, int speedInMPH, int range, double price)
 	{
 		super(model, speedInMPH, range, price);
-	
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

@@ -1,0 +1,3 @@
+Type, Model, Speed, Range, Price
+cargo,"C-130",400,2000,12000000.0
+fighter,"A-10",300,0,0.0
