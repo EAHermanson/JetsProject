@@ -7,8 +7,6 @@ public abstract class Jet
 	private int range;
 	private double price;
 	
-	public Jet() {}
-	
 	public Jet(String model, int speedInMPH, int range, double price)
 	{
 		super();
@@ -25,9 +23,14 @@ public abstract class Jet
 				"\nSpeed (MPH):  " + speedInMPH + 
 				"\nRange:  " + range + 
 				"\nPrice:  " + price + 
-				"\nMaximum Flight Time:  " + (speedInMPH / range) );
+				"\nMaximum Flight Time:  " + getMaxFlightTime() );
 	}
 
+	public double getMaxFlightTime()
+	{
+		return ( getRange() / getSpeedInMPH() );
+	}
+	
 	public double getSpeedInMach()
 	{
 		return (getSpeedInMPH() * 0.001303);
@@ -76,7 +79,7 @@ public abstract class Jet
 	@Override
 	public String toString()
 	{
-		return "Jet [model=" + model + ", speedInMPH=" + speedInMPH + ", range=" + range + ", price=" + price + "]";
+		return "Model=" + model + ", Speed (mph)=" + speedInMPH + ", Range=" + range + ", Price=" + price + ".";
 	}
 
 

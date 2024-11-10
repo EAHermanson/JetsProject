@@ -1,3 +1,6 @@
 Type, Model, Speed, Range, Price
-cargo,"C-130",400,2000,12000000.0
-fighter,"A-10",300,0,0.0
+cargo,"C-130",370,1270,14000000.0
+fighter,"A-10",381,288,11000000.0
+passenger,"Boeing 747-8",580,8900,418400000.0
+passenger,"Embraer E-175",530,2531,3900000.0
+cargo,"Antonov An-225 Mriya",497,2500,350000000

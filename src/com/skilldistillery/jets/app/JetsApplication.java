@@ -60,15 +60,18 @@ public class JetsApplication
 				loadCargoJets();
 				break;
 			case 6:
-				dogfight();
+				loadPassengerPlanes();
 				break;
 			case 7:
-				addJet();
+				dogfight();
 				break;
 			case 8:
-				removeJet();
+				addJet();
 				break;
 			case 9:
+				removeJet();
+				break;
+			case 10:
 				quit = true;
 				break;
 			default:
@@ -95,39 +98,42 @@ public class JetsApplication
 
 	private void dogfight()
 	{
-		// TODO Auto-generated method stub
-		
+		System.out.println(airField.launchFighters() );
+	}
+	
+	private void loadPassengerPlanes()
+	{
+		System.out.println(airField.loadPassengerJets() );
 	}
 
 	private void loadCargoJets()
 	{
-		// TODO Auto-generated method stub
-		
+		System.out.println(airField.loadCargoJets() );
 	}
 
 	private void viewLongestRangeJet()
 	{
 		// TODO Auto-generated method stub
-		
+		System.out.println(airField.viewLongestRange());
 	}
 
 	private void viewFastestJet()
 	{
 		// TODO Auto-generated method stub
-		
+		System.out.println(airField.viewFastest());
 	}
 
 	private void flyAllJets()
 	{
 		// TODO Auto-generated method stub
+		airField.flyAllJets();
 		
 	}
 
 	private void listFleet()
 	{
 		// TODO Auto-generated method stub
-		
-		
+		System.out.println(airField.listJets() );
 	}
 
 	private void displayUserMenu()
@@ -145,14 +151,15 @@ public class JetsApplication
 		 */
 		
 		System.out.println("1 - List the fleet" +
-						"\n2 - Fly all jets" + 
-						"\n3 - View fastest jet" + 
-						"\n4 - View jet with longest range" + 
-						"\n5 - Load all Cargo Jets" + 
-						"\n6 - Dogfight!" + 
-						"\n7 - Add a jet to the fleet" + 
-						"\n8 - Remove a jet from the fleet" +
-						"\n9 - Quit" +
+						"\n2 - Fly All Jets" + 
+						"\n3 - View Fastest Jet" + 
+						"\n4 - View Jet With Longest Range" + 
+						"\n5 - Load All Cargo Planes" + 
+						"\n6 - Load All Passenger Planes" +
+						"\n7 - Dogfight!" + 
+						"\n8 - Add A Jet To The Fleet" + 
+						"\n9 - Remove A Jet From The Fleet" +
+						"\n10 - Quit" +
 						"\nPlease enter selection:  ");
 	}
 
