@@ -6,30 +6,30 @@ public class JetsApplication
 {
 	private AirField airField = new AirField();
 	private static Scanner scanner;
-	
+
 	public static void main(String[] args)
 	{
 		scanner = new Scanner(System.in);
-		
+
 		JetsApplication jetsApp = new JetsApplication();
 		jetsApp.launch();		
-		
+
 		scanner.close();
 	}
-	
+
 	private void launch()
 	{
 		// TODO Loop
 		boolean quit = false;
 		int input;
-		
+
 		while(!quit)
 		{
 			displayUserMenu();
-			
+
 			input = scanner.nextInt();
 			scanner.nextLine();
-		
+
 			/*
 			 * List fleet
 			 * Fly all jets
@@ -41,7 +41,7 @@ public class JetsApplication
 			 * Remove a jet from Fleet
 			 * Quit
 			 */
-			
+
 			switch(input)
 			{
 			case 1:
@@ -77,30 +77,89 @@ public class JetsApplication
 			default:
 				System.out.println("Invalid entry, please try again...");
 			}
-			
-			
+
+
 		}
-		
+
 		System.out.println("Thank you for playing!");
 	}
-	
+
 	private void removeJet()
 	{
-		// TODO Auto-generated method stub
+		int selection = -1;
+		listFleet();
 		
+		System.out.print("Select number of jet to remove:  ");
+		selection = scanner.nextInt() -1;
+		scanner.nextLine();
+		
+		airField.removeJet(selection);
+
 	}
 
 	private void addJet()
 	{
-		// TODO Auto-generated method stub
+		int input = -1;
+		boolean finished = false;
+		String type = "";
+		String model;
+		String speedInMPH;
+		String range;
+		String price;
 		
+		while(!finished)
+		{
+			System.out.println("What kind of plane are you adding?" +
+					"\n1 - Passenger" +
+					"\n2 - Cargo" + 
+					"\n3 - Fighter" + 
+					"\n4 - Cancel");
+			input = scanner.nextInt();
+			scanner.nextLine();
+			
+			switch(input)
+			{
+			case 1:
+				type = "passenger";
+				finished = true;
+				break;
+			case 2:
+				type = "cargo";
+				finished = true;
+				break;
+			case 3:
+				type = "fighter";
+				finished = true;
+				break;
+			case 4:
+				return;
+			default:
+				System.out.println("Invalid entry, please try again...");
+				break;
+			}
+		}
+		
+		model = getTraitFromUser("model");
+		speedInMPH = getTraitFromUser("speed (mph)");
+		range = getTraitFromUser("range (miles)");
+		price = getTraitFromUser("price ($)");
+		
+		airField.createJet(type, model, speedInMPH, range, price);
 	}
 
+	private String getTraitFromUser(String traitName)
+	{
+		System.out.print("Please enter " + traitName + ":  ");
+		String trait = scanner.nextLine();
+		
+		return trait;
+	}
+	
 	private void dogfight()
 	{
 		System.out.println(airField.launchFighters() );
 	}
-	
+
 	private void loadPassengerPlanes()
 	{
 		System.out.println(airField.loadPassengerJets() );
@@ -127,7 +186,7 @@ public class JetsApplication
 	{
 		// TODO Auto-generated method stub
 		airField.flyAllJets();
-		
+
 	}
 
 	private void listFleet()
@@ -149,18 +208,18 @@ public class JetsApplication
 		 * Remove a jet from Fleet
 		 * Quit
 		 */
-		
+
 		System.out.println("1 - List the fleet" +
-						"\n2 - Fly All Jets" + 
-						"\n3 - View Fastest Jet" + 
-						"\n4 - View Jet With Longest Range" + 
-						"\n5 - Load All Cargo Planes" + 
-						"\n6 - Load All Passenger Planes" +
-						"\n7 - Dogfight!" + 
-						"\n8 - Add A Jet To The Fleet" + 
-						"\n9 - Remove A Jet From The Fleet" +
-						"\n10 - Quit" +
-						"\nPlease enter selection:  ");
+				"\n2 - Fly All Jets" + 
+				"\n3 - View Fastest Jet" + 
+				"\n4 - View Jet With Longest Range" + 
+				"\n5 - Load All Cargo Planes" + 
+				"\n6 - Load All Passenger Planes" +
+				"\n7 - Dogfight!" + 
+				"\n8 - Add A Jet To The Fleet" + 
+				"\n9 - Remove A Jet From The Fleet" +
+				"\n10 - Quit" +
+				"\nPlease enter selection:  ");
 	}
 
 }

@@ -38,8 +38,7 @@ public class AirField
 				String jetRange = fields[3];
 				String jetPrice = fields[4];
 
-				fleet.add(createJet(jetType, jetModel, Integer.parseInt(jetSpeed), 				
-					Integer.parseInt(jetRange), Double.parseDouble(jetPrice) ) );
+				createJet(jetType, jetModel, jetSpeed, jetRange, jetPrice);
 			}
 		}
 		catch(FileNotFoundException e)
@@ -52,29 +51,51 @@ public class AirField
 		}
 	}
 	
-	public Jet createJet(String type, String model, int speedInMPH, int range, double price)
+	public void createJet(String type, String model, String speedInMPH, String range, String price)
 	{
+		int jetSpeed = Integer.parseInt(speedInMPH);
+		int jetRange = Integer.parseInt(range);
+		double jetPrice = Double.parseDouble(price);
+		Jet jet = null;
+		
 		switch(type)
 		{
 		case "passenger":
-			return new PassengerPlane(model, speedInMPH, range, price);
+			jet = new PassengerPlane(model, jetSpeed, jetRange, jetPrice);
+			break;
 		case "fighter":
-			return new FighterJet(model, speedInMPH, range, price);
+			jet = new FighterJet(model, jetSpeed, jetRange, jetPrice);
+			break;
 		case "cargo":
-			return new CargoPlane(model, speedInMPH, range, price);
+			jet = new CargoPlane(model, jetSpeed, jetRange, jetPrice);
+			break;
 		default:
 			System.out.println("Unknown jet type, custom builds not yet supported.");
-			return null;
+			return;
 		}
+		
+		fleet.add(jet);
+	}
+	
+	public void removeJet(int jetNumber)
+	{
+		fleet.remove(jetNumber);
 	}
 	
 	public String listJets()
 	{
 		String list = "";
+		int index = 0;
+		
 		for (Jet jet : fleet)
 		{
-			list = list + "Model:  " + jet.getModel() + ".\tSpeed:  " + jet.getSpeedInMPH() + 
-					".\tRange:  " + jet.getRange() + ".\tPrice:  " + jet.getPrice() + ".\n";
+			index++;
+			
+			list = list + index + 
+					"  Model:  " + jet.getModel() + 
+					".\tSpeed:  " + jet.getSpeedInMPH() + 
+					".\tRange:  " + jet.getRange() + 
+					".\tPrice:  " + jet.getPrice() + ".\n";
 		}
 		
 		return list;
@@ -203,4 +224,6 @@ public class AirField
 		
 		return "All " + count + " fighter planes have launched!";
 	}
+
+	
 }
