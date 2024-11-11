@@ -1,11 +1,10 @@
 package com.skilldistillery.jets.entities;
 
-public class FighterJet extends Jet
+public class FighterJet extends Jet implements CombatAircraft
 {
 	public FighterJet(String model, int speedInMPH, int range, double price)
 	{
 		super(model, speedInMPH, range, price);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void fight()
