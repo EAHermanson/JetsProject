@@ -2,7 +2,11 @@
 
 ## Description
 
-This program 
+This program simulates an airfield specifically housing jet planes.
+It loads an initial set of planes from a file, and you can add or remove planes of a few types and fly them around.
+Passenger planes can load passengers.
+Cargo planes an load cargo.
+Fighter planes can fight.
 
 ## Technologies Used
 	- Java
@@ -26,4 +30,3 @@ This program
 ## How To Run
 	- This program should function on its own, the Jets.txt file has a header that tells what field is what, that is ignored by the program, but other lines will be read in to establish the starting fleet.  It can be added to or altered as long as it meets the same format.
 	- Type checking was not done for all inputs, but I did try to sanitize some inputs just for fun.
-	
